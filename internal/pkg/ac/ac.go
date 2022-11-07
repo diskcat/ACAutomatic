@@ -136,7 +136,7 @@ func (ac *AC) Replace(content string) string {
 	var begin, end int
 	for i, word := range words {
 		_, ok := iter.children[word]
-		if !ok && iter != ac {
+		for !ok && iter != ac {
 			iter = iter.fail
 		}
 		_, ok = iter.children[word]
